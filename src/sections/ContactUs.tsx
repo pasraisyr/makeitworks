@@ -9,15 +9,48 @@ export const ContactUs: React.FC = () => {
     phone: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you! Your submission has been received.');
+    setIsSubmitting(true);
+
+    // Prefixing with a single quote (') tells Google Sheets to treat the phone number as text instead of a mathematical formula
+    const fullPhone = `'${formData.phonePrefix}${formData.phone}`;
+
+    try {
+      const payload = new URLSearchParams();
+      payload.append('name', formData.name);
+      payload.append('email', formData.email);
+      payload.append('phone', fullPhone);
+
+      await fetch('https://script.google.com/macros/s/AKfycby8gK8zpdYt3EvC2bqKPXveRKKAwOWPTkMNQm-oz_PgJUKn7X3QyIjTSuoqmyTA-DM/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: payload.toString()
+      });
+
+      alert('Thank you! Your submission has been saved.');
+      setFormData({
+        name: '',
+        email: '',
+        phonePrefix: '',
+        phone: ''
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Oops! Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -78,7 +111,13 @@ export const ContactUs: React.FC = () => {
             />
           </div>
           <div className="form-submit-container">
-            <button type="submit" className="form-submit-btn">Submit</button>
+            <button 
+              type="submit" 
+              className="form-submit-btn" 
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Sending...' : 'Submit'}
+            </button>
           </div>
         </form>
 

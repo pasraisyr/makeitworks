@@ -291,6 +291,7 @@ ul {
     letter-spacing: 2px;
     font-size: 2.2rem;
     line-height: 1.3;
+    white-space: normal;
   }
 }
 
@@ -303,6 +304,10 @@ ul {
   }
   .logo-main {
     font-size: 1.6rem;
+  }
+  .hero-title {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
   }
 }
 
