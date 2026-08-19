@@ -1,17 +1,10 @@
 import React from 'react';
+import fauzianaImg from '../assets/IMG_4235.PNG';
+import fazlyImg from '../assets/IMG_4241.PNG';
+import rafizanImg from '../assets/IMG_4258.PNG';
+import naqibImg from '../assets/IMG_4259.PNG';
 
 export const MeetTheTeam: React.FC = () => {
-  const avatarIcon = (
-    <svg 
-      className="team-avatar-icon" 
-      viewBox="0 0 24 24" 
-      fill="currentColor" 
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-    </svg>
-  );
-
   return (
     <section id="team" className="team-section">
       <div className="team-header">
@@ -29,7 +22,11 @@ export const MeetTheTeam: React.FC = () => {
         {/* CEO */}
         <div className="team-card">
           <div className="team-image-container">
-            {avatarIcon}
+            <img 
+              src={fauzianaImg} 
+              alt="Nurul Fauziana Abu Bakar" 
+              className="team-image" 
+            />
           </div>
           <div className="team-content">
             <h3 className="team-name">Nurul Fauziana Abu Bakar</h3>
@@ -55,7 +52,11 @@ export const MeetTheTeam: React.FC = () => {
         {/* Construction Manager */}
         <div className="team-card">
           <div className="team-image-container">
-            {avatarIcon}
+            <img 
+              src={naqibImg} 
+              alt="Muhammad Naqib Othman" 
+              className="team-image" 
+            />
           </div>
           <div className="team-content">
             <h3 className="team-name">Muhammad Naqib Othman</h3>
@@ -80,7 +81,11 @@ export const MeetTheTeam: React.FC = () => {
         {/* Project Manager */}
         <div className="team-card">
           <div className="team-image-container">
-            {avatarIcon}
+            <img 
+              src={rafizanImg} 
+              alt="Rafizan Rahmat" 
+              className="team-image" 
+            />
           </div>
           <div className="team-content">
             <h3 className="team-name">Rafizan Rahmat</h3>
@@ -98,9 +103,40 @@ export const MeetTheTeam: React.FC = () => {
             </ul>
           </div>
         </div>
+
+        {/* HSE Manager */}
+        <div className="team-card">
+          <div className="team-image-container">
+            <img 
+              src={fazlyImg} 
+              alt="Mohamad Fazly Selamat" 
+              className="team-image" 
+            />
+          </div>
+          <div className="team-content">
+            <h3 className="team-name">Mohamad Fazly Selamat</h3>
+            <span className="team-role">HSE Manager</span>
+            <div className="team-credentials">
+              <span className="team-cred-item">Certificate of Attendance in Safety & Health Officer (NIOSH)</span>
+              <span className="team-cred-item">Diploma in Civil Technology Building (KYPJ)</span>
+            </div>
+            <ul className="team-bio-list">
+              <li>
+                Over 15 years of experience in Health, Safety, Security & Environment (HSSE) across facilities management, retail, logistics, and manufacturing industries.
+              </li>
+              <li>
+                Experienced in leading Behaviour-Based Safety (BBS) initiatives, contractor management, safety compliance, operational risk management, and HSE auditing.
+              </li>
+              <li>
+                Strong background in Permit to Work (PTW), incident investigation, hazard identification, safety leadership, and continuous improvement programs.
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 
 export default MeetTheTeam;
+
